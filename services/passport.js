@@ -9,7 +9,7 @@ const LocalStrategy = require('passport-local');
 const localLogin = new LocalStrategy({usernameField: 'email' }, function(email, password, done) {
     User.findOne({email: email}, function(err, user) {
         if (err) {return done(err);}
-        if(!user) {return cone(null, false);}
+        if(!user) {return done(null, false);}
 
         //compare passowrd
         user.comparePassword(password, function(err, isMatch){
